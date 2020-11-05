@@ -15,6 +15,8 @@ import java.util.Collection;
 @Entity
 public class User {
 
+    //please make the username unique and change the property of the table
+
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
