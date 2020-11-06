@@ -55,6 +55,14 @@ public class User {
         this.roles = roles;
     }
 
+    public User(String name, String email, String phone, String address, String password) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.address =address;
+        this.password = password;
+    }
+
     public String getUserName() {
         return username;
     }

@@ -67,41 +67,40 @@
             <div class="col-md-6 col-md-offset-3">
                 <!-- success message -->
                 <div th:if="${param.success}">
-                    <div class="alert alert-info">You've successfully registered
-                        to our awesome app!</div>
+                    <div class="alert alert-info">You've successfully Update your information's!! </div>
                 </div>
 
-                <form th:action="@{/save}" method="post">
+
+                <form th:object="${user}"  th:action="@{/save/{id}(id=${user.id})}" method="post" >
                     <div class="form-group">
                         <label class="control-label" for="name"> Name </label>
-                        <input id="name" class="form-control"
+                        <input id="name" class="form-control" th:value='${user.name}'
                                required autofocus="autofocus" />
 
                     </div>
                     <div class="form-group">
                         <label class="control-label" for="email"> Email </label> <input
-                            id="email" class="form-control"  required
-                            autofocus="autofocus" />
+                            id="email" class="form-control" th:value='${user.email}'
+                            required  autofocus="autofocus" />
                     </div>
 
                     <div class="form-group">
                         <label class="control-label" for="phone"> Phone </label> <input
-                            id="phone" class="form-control"
+                            id="phone" class="form-control" th:value='${user.phone}'
                             required autofocus="autofocus" />
                     </div>
 
 
                     <div class="form-group">
                         <label class="control-label" for="address"> Address </label> <input
-                            id="address" class="form-control"
+                            id="address" class="form-control" th:value='${user.address}'
                             required autofocus="autofocus" />
                     </div>
 
-
                     <div class="form-group">
                         <label class="control-label" for="password"> Password </label> <input
-                            id="password" class="form-control" type="password"
-                             required autofocus="autofocus" />
+                            id="password" class="form-control" th:value='${user.password}'
+                            required autofocus="autofocus" />
                     </div>
 
                     <div class="form-group text-center">
@@ -110,14 +109,9 @@
                 </form>
 
 
-
-
             </div>
         </div>
     </div>
-
-
-
 
 </div>
 </body>
