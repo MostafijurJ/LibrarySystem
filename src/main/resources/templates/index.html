@@ -1,57 +1,77 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-<meta charset="ISO-8859-1">
-<title> profile management module</title>
+    <meta charset="ISO-8859-1">
+    <title> profile management module</title>
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
 
 </head>
 <body>
-	<!-- create navigation bar ( header) -->
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#" th:href="@{/}">Profile Management Module</a>
-			</div>
-			<div id="navbar" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
 
-	<br>
-	<br>
-	<br>
+<div class="container my-5">
 
-	<div class="container">
-		<h1>Welcome to Spring's Secured World!! </h1>
-		<h3> Welcome Mr.  <span th:text="${data.firstName}"> Name </span> </h3>
+    <!-- create navigation bar ( header) -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed"
+                        data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                        aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span> <span
+                        class="icon-bar"></span> <span class="icon-bar"></span> <span
+                        class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" th:href="@{/}">Profile Management Module</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
+    <br>
+    <br>
+    <br>
+
+    <div class="container">
+        <h1>Welcome Mr. <span th:text="${data.name}"> Name </span> to Spring's Secured World!! </h1>
+
+    </div>
+    <br>
+
+	<div class="card">
+		<table class="table table-hover">
+			<thead>
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Name</th>
+				<th scope="col">Email</th>
+				<th scope="col">Edit Info </th>
+				<th scope="col">Details info</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<th scope="row">1</th>
+				<td> <span th:text="${data.name}"> Name </span></td>
+				<td> <span th:text="${data.email}"> Email </span></td>
+				<td>
+					<a class="btn btn-sm btn-primary" href="/update"><i class="far fa-edit"></i> Edit</a>
+					<a class="btn btn-sm btn-danger" href="#"><i class="fas fa-trash-alt"></i> Delete</a>
+				</td>
+				<td>	<a class="btn btn-sm btn-info" href="show"><i class="fas fa-info-circle"></i> Details</a> </td>
+			</tr>
+			</tbody>
+		</table>
 	</div>
-	<br>
-	<br>
-	<br>
-		<div class="container">
 
-			<h2> Your Details Information's</h2>
-			<h4> First Name : <span th:text="${data.firstName}"> Name </span> </h4>
-			<h4> Last Name : <span th:text="${data.lastName}"> Name </span> </h4>
-			<h4> Email : <span th:text="${data.email}"> Email </span> </h4>
-		</div>
-
+</div>
 </body>
 </html>

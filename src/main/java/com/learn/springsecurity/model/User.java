@@ -13,6 +13,9 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
+@Table(uniqueConstraints = {
+        @UniqueConstraint(columnNames = "username", name = "uniqueNameConstraint")}
+)
 public class User {
 
     //please make the username unique and change the property of the table
@@ -21,12 +24,14 @@ public class User {
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
 
-    private String firstName;
+    private String name;
 
-    private String lastName;
+    @Column(nullable = false)
     private String username;
 
     private String email;
+    private String phone;
+    private String address;
 
     private String password;
 
@@ -36,16 +41,16 @@ public class User {
     public User(String userName, String password, Collection<? extends GrantedAuthority> grantedAuthorities) {
 
     }
-
     public User(){
         super();
     }
 
-    public User(String firstName, String lastName, String userName, String email, String password, Collection<Role> roles) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.username = userName;
+    public User(String name, String username, String email, String phone, String address, String password, Collection<Role> roles) {
+        this.name = name;
+        this.username = username;
         this.email = email;
+        this.phone = phone;
+        this.address =address;
         this.password = password;
         this.roles = roles;
     }
@@ -54,8 +59,40 @@ public class User {
         return username;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public void setUserName(String userName) {
         this.username = userName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Long getId() {
@@ -63,18 +100,6 @@ public class User {
     }
     public void setId(Long id) {
         this.id = id;
-    }
-    public String getFirstName() {
-        return firstName;
-    }
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-    public String getLastName() {
-        return lastName;
-    }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
     public String getEmail() {
         return email;
