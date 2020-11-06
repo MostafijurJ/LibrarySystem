@@ -28,11 +28,9 @@ public class User {
 
     @Column(nullable = false)
     private String username;
-
     private String email;
     private String phone;
     private String address;
-
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
