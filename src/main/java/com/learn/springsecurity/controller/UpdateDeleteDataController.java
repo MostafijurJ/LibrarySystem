@@ -7,13 +7,13 @@
 
 package com.learn.springsecurity.controller;
 
-import com.learn.springsecurity.model.UpdateInfo;
 import com.learn.springsecurity.model.User;
 import com.learn.springsecurity.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -35,10 +35,9 @@ public class UpdateDeleteDataController {
     }
 
     // call to action when press save data
-    @PostMapping(value = "save")
-    public String saveUpdate(User user, @RequestParam("id") String id, @RequestParam("username") String name) {
-        System.out.println(user.getName() + user.getId() + user.getPassword()+ user.getAddress());
-        System.out.println(id+name);
+    @PostMapping("save/{id}/{username}")
+    public String saveUpdate(User user) {
+        //System.out.println(user.getName() + user.getId() + user.getPassword()+ user.getAddress());
         repository.save(user);
         return "success";
     }

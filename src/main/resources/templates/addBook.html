@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<!--
+  Author: Mostafijur Rahman
+  Date: 11/9/2020
+  Time: 1:11 PM
+-->
+<head>
+    <meta charset="UTF-8">
+    <title>Buy Book</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+</head>
+<body>
+
+
+<div class="buymain" >
+    <div th:if="${param.success}">
+        <div class="alert alert-info"> Book successfully saved to profile!! </div>
+    </div>
+    <p class="sign" align="center">Add Book</p>
+    <p align="center">Add a book into your cart, you need to fill the required info. </p>
+
+    <form class="buy" th:action="@{/addBook}"  method="post">
+        <input class="by" type="text" align="center" name ="bookName" placeholder="Book name">
+        <input class="by" type="text" align="center"  name="authorName" placeholder="Author name">
+        <input class="by" type="text" align="center"  name="version" placeholder="Version">
+        <input class="by" type="date" align="center"  name="date" placeholder="Date">
+
+        <input type="submit" class="submit" align="center" value= "Add to Cart" >
+    </form>
+
+    <br>
+    <br>
+    <p align="center">Back to? <a href="/home"> Dashboard</a></p>
+
+</div>
+
+</body>
+</html>

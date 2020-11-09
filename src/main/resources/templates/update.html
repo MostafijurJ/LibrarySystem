@@ -71,7 +71,7 @@
                 </div>
 
 
-                <form th:object="${user}"  th:action="@{/save}" method="post" >
+                <form th:object="${user}"  th:action="@{/save/{id}/{username}  (id=${user.id}, username=${user.username})}" method="post" >
                     <div class="form-group">
                         <label class="control-label" for="name"> Name </label>
                         <input id="name" name="name" class="form-control" th:value='${user.name}'

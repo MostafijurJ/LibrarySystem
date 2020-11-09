@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService{
 	public User save(UserRegistrationDto registrationDto) {
 		User user = new User(registrationDto.getName(),
 				registrationDto.getUsername(),registrationDto.getEmail(), registrationDto.getPhone(), registrationDto.getAddress(),
-				registrationDto.getPassword(), Arrays.asList(new Role("ROLE_USER")));
+				registrationDto.getPassword(), Arrays.asList(new Role("ROLE_ADMIN")));
 		
 		return userRepository.save(user);
 	}
