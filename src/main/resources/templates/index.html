@@ -46,33 +46,35 @@
     </div>
     <br>
 
-	<div class="card">
-		<table class="table table-hover">
-			<thead>
-			<tr>
-				<th scope="col">ID</th>
-				<th scope="col">Name</th>
-				<th scope="col">Email</th>
-				<th scope="col">Edit Info </th>
-				<th scope="col">Details info</th>
-			</tr>
-			</thead>
-			<tbody>
+    <div class="card">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Edit Info</th>
+                <th scope="col">Details info</th>
+            </tr>
+            </thead>
+            <tbody>
             <tr th:each="data : ${data}">
-                <td> <span th:text="${data.id}"> id </span></td>
-				<td> <span th:text="${data.name}"> Name </span></td>
-				<td> <span th:text="${data.email}"> Email </span></td>
-				<td>
-                   <!-- th:href="@{/students/edit/{id}(id=${student.id})}"-->
-					<a class="btn btn-sm btn-primary" th:href="@{/update/{id} (id=${data.id})}"> <i class="far fa-edit"></i> Edit</a>
-					<a class="btn btn-sm btn-danger" th:href="@{/delete/{id} (id=${data.id})}"><i class="fas fa-trash-alt"></i> Delete</a>
-				</td>
-				<td>	<a class="btn btn-sm btn-info" th:href="@{/details}"><i class="fas fa-info-circle"></i> Details</a> </td>
-			</tr>
-			</tbody>
-		</table>
-	</div>
-
+                <td><span th:text="${data.id}"> id </span></td>
+                <td><span th:text="${data.name}"> Name </span></td>
+                <td><span th:text="${data.email}"> Email </span></td>
+                <td>
+                    <!-- th:href="@{/students/edit/{id}(id=${student.id})}"-->
+                    <a class="btn btn-sm btn-primary" th:href="@{/update/{id} (id=${data.id})}"> <i
+                            class="far fa-edit"></i> Edit</a>
+                    <a class="btn btn-sm btn-danger" th:href="@{/delete/{id} (id=${data.id})}"><i
+                            class="fas fa-trash-alt"></i> Delete</a>
+                </td>
+                <td><a class="btn btn-sm btn-info" th:href="@{/details}"><i class="fas fa-info-circle"></i> Details</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
     <div class="card" th:if="${details} == 'details'">
 
@@ -83,13 +85,13 @@
                 <h2> Your Details Information </h2>
             </div>
 
-            <div >
-                <h4> ID  : <span th:text="${data.id}"> id </span> </h4>
-                <h4> Name : <span th:text="${data.name}"> Name </span> </h4>
-                <h4> User Name : <span th:text="${data.username}"> UserName </span> </h4>
-                <h4> Email :  <span th:text="${data.email}"> Email </span> </h4>
-                <h4> Phone Number : <span th:text="${data.phone}"> Phone </span> </h4>
-                <h4> Password :  <span th:text="${data.password}"> {Password} </span> </h4>
+            <div>
+                <h4> ID : <span th:text="${data.id}"> id </span></h4>
+                <h4> Name : <span th:text="${data.name}"> Name </span></h4>
+                <h4> User Name : <span th:text="${data.username}"> UserName </span></h4>
+                <h4> Email : <span th:text="${data.email}"> Email </span></h4>
+                <h4> Phone Number : <span th:text="${data.phone}"> Phone </span></h4>
+                <h4> Password : <span th:text="${data.password}"> {Password} </span></h4>
                 <br>
                 <br>
 

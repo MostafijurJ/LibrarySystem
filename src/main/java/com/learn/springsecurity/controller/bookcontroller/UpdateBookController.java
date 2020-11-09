@@ -31,8 +31,8 @@ public class UpdateBookController {
     }
 
     @PostMapping
-    public String updateInfo( @ModelAttribute Book book) {
-       // bookRepository.save(book);
+    public String updateInfo(@ModelAttribute Book book) {
+        // bookRepository.save(book);
 
         System.out.println(book.getId());
 

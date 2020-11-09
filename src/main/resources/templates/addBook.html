@@ -21,20 +21,20 @@
 <body>
 
 
-<div class="buymain" >
+<div class="buymain">
     <div th:if="${param.success}">
-        <div class="alert alert-info"> Book successfully saved to profile!! </div>
+        <div class="alert alert-info"> Book successfully saved to profile!!</div>
     </div>
     <p class="sign" align="center">Add Book</p>
     <p align="center">Add a book into your cart, you need to fill the required info. </p>
 
-    <form class="buy" th:action="@{/addBook}"  method="post">
-        <input class="by" type="text" align="center" name ="bookName" placeholder="Book name">
-        <input class="by" type="text" align="center"  name="authorName" placeholder="Author name">
-        <input class="by" type="text" align="center"  name="version" placeholder="Version">
-        <input class="by" type="date" align="center"  name="date" placeholder="Date">
+    <form class="buy" th:action="@{/addBook}" method="post">
+        <input class="by" type="text" align="center" name="bookName" placeholder="Book name">
+        <input class="by" type="text" align="center" name="authorName" placeholder="Author name">
+        <input class="by" type="text" align="center" name="version" placeholder="Version">
+        <input class="by" type="date" align="center" name="date" placeholder="Date">
 
-        <input type="submit" class="submit" align="center" value= "Add to Cart" >
+        <input type="submit" class="submit" align="center" value="Add to Cart">
     </form>
 
     <br>

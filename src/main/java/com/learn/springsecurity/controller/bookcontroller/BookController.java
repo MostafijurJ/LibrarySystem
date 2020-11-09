@@ -29,7 +29,7 @@ public class BookController {
 
 
     @GetMapping("/viewBook")
-    public String ViewBook(Model model){
+    public String ViewBook(Model model) {
         Collection<Book> books = (Collection<Book>) bookRepository.findAll();
         model.addAttribute("books", books);
 
@@ -37,17 +37,14 @@ public class BookController {
     }
 
     @GetMapping("/details/{id}")
-    public String detailsShow(@PathVariable("id") Long id, Model model){
+    public String detailsShow(@PathVariable("id") Long id, Model model) {
 
         Book book = bookRepository.findById(id)
-                . orElseThrow(() -> new IllegalArgumentException("Invalid Book Id:" + id));
+                .orElseThrow(() -> new IllegalArgumentException("Invalid Book Id:" + id));
 
         model.addAttribute("book", book);
         return "bookdetailsShow";
     }
-
-
-
 
 
 }

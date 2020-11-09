@@ -38,14 +38,14 @@
         </thead>
         <tbody>
         <tbody>
-                <tr th:each="book : ${books}" >
+        <tr th:each="book : ${books}">
 
-                    <td th:text="${book.bookName}">Name</td>
+            <td th:text="${book.bookName}">Name</td>
 
-                     <td><a th:href="@{/details/{id} (id=${book.id})}">Details</a>
-                </tr>
+            <td><a th:href="@{/details/{id} (id=${book.id})}">Details</a>
+        </tr>
 
-            </tbody>
+        </tbody>
         </tbody>
     </table>
 

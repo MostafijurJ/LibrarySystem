@@ -48,14 +48,16 @@
         <tbody>
 
         <tr th:each="book : ${book}">
-            <td> <span th:text="${book.id}"> id </span></td>
-            <td> <span th:text="${book.bookName}"> Name </span></td>
-            <td> <span th:text="${book.authorName}"> Author Name </span></td>
-            <td> <span th:text="${book.version}"> Book version </span></td>
-            <td> <span th:text="${book.date}"> Date </span></td>
+            <td><span th:text="${book.id}"> id </span></td>
+            <td><span th:text="${book.bookName}"> Name </span></td>
+            <td><span th:text="${book.authorName}"> Author Name </span></td>
+            <td><span th:text="${book.version}"> Book version </span></td>
+            <td><span th:text="${book.date}"> Date </span></td>
             <td>
-                <a class="btn btn-sm btn-primary" th:href="@{/saveUpdatebook/{id} (id=${book.id})}"> <i class="far fa-edit"></i> Edit</a>
-                <a class="btn btn-sm btn-danger" th:href="@{/deleteBook/{id} (id=${book.id})}"><i class="fas fa-trash-alt"></i> Delete</a>
+                <a class="btn btn-sm btn-primary" th:href="@{/saveUpdatebook/{id} (id=${book.id})}"> <i
+                        class="far fa-edit"></i> Edit</a>
+                <a class="btn btn-sm btn-danger" th:href="@{/deleteBook/{id} (id=${book.id})}"><i
+                        class="fas fa-trash-alt"></i> Delete</a>
             </td>
         </tr>
 
