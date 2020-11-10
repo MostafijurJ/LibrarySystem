@@ -1,10 +1,10 @@
 package com.learn.springsecurity.service;
 
 
-import com.learn.springsecurity.model.Role;
-import com.learn.springsecurity.model.User;
+import com.learn.springsecurity.entities.Role;
+import com.learn.springsecurity.entities.User;
 import com.learn.springsecurity.repository.UserRepository;
-import com.learn.springsecurity.web.dto.UserRegistrationDto;
+import com.learn.springsecurity.dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

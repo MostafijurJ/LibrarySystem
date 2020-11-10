@@ -1,4 +1,4 @@
-package com.learn.springsecurity.web.dto;
+package com.learn.springsecurity.dto;
 
 public class UserRegistrationDto {
 

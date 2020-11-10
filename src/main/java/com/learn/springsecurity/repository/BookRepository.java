@@ -7,7 +7,7 @@
 
 package com.learn.springsecurity.repository;
 
-import com.learn.springsecurity.model.Book;
+import com.learn.springsecurity.entities.Book;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

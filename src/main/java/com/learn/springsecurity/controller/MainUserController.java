@@ -1,7 +1,7 @@
 package com.learn.springsecurity.controller;
 
 
-import com.learn.springsecurity.model.User;
+import com.learn.springsecurity.entities.User;
 import com.learn.springsecurity.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

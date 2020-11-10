@@ -3,7 +3,7 @@
   Date: 11/5/2020
 */
 
-package com.learn.springsecurity.model;
+package com.learn.springsecurity.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

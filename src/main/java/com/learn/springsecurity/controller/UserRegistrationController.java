@@ -1,8 +1,8 @@
-package com.learn.springsecurity.web;
+package com.learn.springsecurity.controller;
 
 
 import com.learn.springsecurity.service.UserService;
-import com.learn.springsecurity.web.dto.UserRegistrationDto;
+import com.learn.springsecurity.dto.UserRegistrationDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;

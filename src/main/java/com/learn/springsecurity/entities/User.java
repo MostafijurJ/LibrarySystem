@@ -5,7 +5,7 @@
 */
 
 
-package com.learn.springsecurity.model;
+package com.learn.springsecurity.entities;
 
 import org.springframework.security.core.GrantedAuthority;
 

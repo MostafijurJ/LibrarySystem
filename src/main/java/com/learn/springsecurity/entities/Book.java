@@ -5,13 +5,11 @@
 */
 
 
-package com.learn.springsecurity.model;
+package com.learn.springsecurity.entities;
 
-import com.sun.source.tree.LambdaExpressionTree;
-
-import javax.persistence.*;
-import java.util.Collection;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public class Book{
