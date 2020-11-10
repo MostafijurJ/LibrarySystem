@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class UpdateDeleteDataController {
+public class UserUpdateDeleteController {
 
     @Autowired
     UserRepository repository;

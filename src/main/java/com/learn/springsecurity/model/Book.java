@@ -9,9 +9,8 @@ package com.learn.springsecurity.model;
 
 import com.sun.source.tree.LambdaExpressionTree;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -25,16 +24,19 @@ public class Book{
     private String version;
     private String date;
 
+    private Long userId;
+
     public Book(){
         super();
     }
 
 
-    public Book(String bookName, String authorName, String version, String date) {
+    public Book(String bookName, String authorName, String version, String date, long userId) {
         this.bookName = bookName;
         this.authorName = authorName;
         this.version = version;
         this.date = date;
+        this.userId = userId;
     }
 
     public Long getId() {
@@ -75,5 +77,13 @@ public class Book{
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

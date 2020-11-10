@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.security.Principal;
 
 @Controller
-public class MainController {
+public class MainUserController {
 
     @Autowired
     UserRepository repository;

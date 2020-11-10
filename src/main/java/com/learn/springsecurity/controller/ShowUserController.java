@@ -17,12 +17,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.security.Principal;
 
 @Controller
-public class ShowController {
+public class ShowUserController {
 
     @Autowired
     UserRepository repository;
-
-    // Call to action when press details view
     @GetMapping("details")
     public String detailsShow(Model model, Principal principal) {
         String username = principal.getName();
