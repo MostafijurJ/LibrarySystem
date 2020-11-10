@@ -42,7 +42,7 @@
             <th scope="col">Book Name</th>
             <th scope="col">Author Name</th>
             <th scope="col">Version</th>
-            <th scope="col">Price</th>
+            <th scope="col">Added Date</th>
         </tr>
         </thead>
         <tbody>
@@ -54,7 +54,7 @@
             <td><span th:text="${book.version}"> Book version </span></td>
             <td><span th:text="${book.date}"> Date </span></td>
             <td>
-                <a class="btn btn-sm btn-primary" th:href="@{/saveUpdatebook/{id} (id=${book.id})}"> <i
+                <a class="btn btn-sm btn-primary" th:href="@{/updateBook/{id} (id=${book.id})}"> <i
                         class="far fa-edit"></i> Edit</a>
                 <a class="btn btn-sm btn-danger" th:href="@{/deleteBook/{id} (id=${book.id})}"><i
                         class="fas fa-trash-alt"></i> Delete</a>

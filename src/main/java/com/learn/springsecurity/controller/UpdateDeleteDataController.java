@@ -30,7 +30,7 @@ public class UpdateDeleteDataController {
         User user = repository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid User Id:" + id));
         modelAndView.addObject("user", user);
-        modelAndView.setViewName("update");
+        modelAndView.setViewName("updateUser");
         return modelAndView;
     }
 
