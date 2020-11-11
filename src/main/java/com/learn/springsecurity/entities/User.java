@@ -11,6 +11,8 @@ import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(uniqueConstraints = {
@@ -24,13 +26,16 @@ public class User {
     private Long id;
 
     private String name;
-
     @Column(nullable = false)
     private String username;
     private String email;
     private String phone;
     private String address;
     private String password;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Book> books = new HashSet<>();
+
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Collection<Role> roles;

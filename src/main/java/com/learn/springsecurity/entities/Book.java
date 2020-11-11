@@ -7,9 +7,9 @@
 
 package com.learn.springsecurity.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Book{
@@ -24,6 +24,10 @@ public class Book{
 
    // @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Long  userId;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "books")
+    private Set<User> users = new HashSet<>();
+
 
     public Book(){
         super();
