@@ -17,7 +17,6 @@ import java.util.Collection;
         @UniqueConstraint(columnNames = "username", name = "uniqueNameConstraint")}
 )
 public class User {
-
     //please make the username unique and change the property of the table
 
     @Id

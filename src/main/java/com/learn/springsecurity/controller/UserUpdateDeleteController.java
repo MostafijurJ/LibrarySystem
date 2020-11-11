@@ -37,7 +37,6 @@ public class UserUpdateDeleteController {
     // call to action when press save data
     @PostMapping("save/{id}/{username}")
     public String saveUpdate(User user) {
-        //System.out.println(user.getName() + user.getId() + user.getPassword()+ user.getAddress());
         repository.save(user);
         return "success";
     }

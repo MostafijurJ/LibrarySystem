@@ -7,10 +7,9 @@
 
 package com.learn.springsecurity.controller.bookcontroller;
 
+import com.learn.springsecurity.dto.BookRegisterDto;
 import com.learn.springsecurity.entities.Book;
-import com.learn.springsecurity.entities.User;
-import com.learn.springsecurity.repository.BookRepository;
-import com.learn.springsecurity.repository.UserRepository;
+import com.learn.springsecurity.service.BookRegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,34 +22,27 @@ import java.security.Principal;
 
 @Controller
 @RequestMapping()
-public class UpdateNDeleteBookController {
+public class BookUpdateNDeleteController {
 
     @Autowired
-    private BookRepository bookRepository;
-    @Autowired
-    private UserRepository userRepository;
+    private BookRegisterService bookRegisterService;
 
     @GetMapping("/updateBook/{id}")
     public String showBookForm(@PathVariable("id") long id, Model model) {
-        Book book = bookRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid book Id:" + id));
+        Book book = bookRegisterService.loadBookByID(id);
         model.addAttribute("book", book);
         return "updateBook";
     }
 
     @PostMapping("saveUpdatebook/{id}/{date}")
     public String updateBookInfo(Book book, Principal principal) {
-        String userName = principal.getName();
-        User user = userRepository.findByUsername(userName);
-        Long userId = user.getId();
-        book.setUserId(userId);
-        bookRepository.save(book);
-        return "success";
+        bookRegisterService.saveUpdateBook(book, principal);
+        return "saveUpdateMessage";
     }
 
     @GetMapping("deleteBook/{id}")
     public String deleteUser(@PathVariable("id") long id) {
-        bookRepository.deleteById(id);
+        bookRegisterService.deleteBook(id);
         return "deleteSuccessMessage";
     }
 }

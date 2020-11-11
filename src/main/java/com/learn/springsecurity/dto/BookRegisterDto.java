@@ -1,22 +1,13 @@
 /*
   Author: Mostafijur Rahman
-  Date: 11/9/2020
-  Time: 1:55 PM
+  Date: 11/11/2020
+  Time: 10:02 AM
 */
 
 
-package com.learn.springsecurity.entities;
+package com.learn.springsecurity.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-@Entity
-public class Book{
-
-    @Id
-    @GeneratedValue
-    private  Long id;
+public class BookRegisterDto {
     private String bookName;
     private  String authorName;
     private String version;
@@ -24,33 +15,16 @@ public class Book{
 
     private Long userId;
 
-    public Book(){
+    public BookRegisterDto(){
         super();
     }
 
-    public Book(String bookName, String authorName, String version, String date, long userId) {
+    public BookRegisterDto(String bookName, String authorName, String version, String date, Long userId) {
         this.bookName = bookName;
         this.authorName = authorName;
         this.version = version;
         this.date = date;
         this.userId = userId;
-    }
-
-    public Book(Long id, String bookName, String authorName, String version, String date, Long userId) {
-        this.id = id;
-        this.bookName = bookName;
-        this.authorName = authorName;
-        this.version = version;
-        this.date = date;
-        this.userId = userId;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getBookName() {
