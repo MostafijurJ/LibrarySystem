@@ -7,7 +7,7 @@
 package com.learn.springsecurity.controller.bookcontroller;
 
 import com.learn.springsecurity.entities.Book;
-import com.learn.springsecurity.service.BookRegisterService;
+import com.learn.springsecurity.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +21,7 @@ import java.util.List;
 public class BookController {
 
     @Autowired
-    private BookRegisterService bookRegisterService;
+    private BookService bookService;
 
     @GetMapping("/home")
     public String homePage() {
@@ -30,7 +30,7 @@ public class BookController {
 
     @GetMapping("/viewBook")
     public String ViewBook(Model model, Principal principal) {
-        List<Book> books = bookRegisterService.findAllBook(principal);
+        List<Book> books = bookService.findAllBook(principal);
         model.addAttribute("books", books);
         return "viewBook";
     }
@@ -38,7 +38,7 @@ public class BookController {
     //Controller for unique book details view
     @GetMapping("/details/{id}")
     public String detailsShow(@PathVariable("id") Long id, Model model) {
-        Book book = bookRegisterService.loadBookByID(id);
+        Book book = bookService.loadBookByID(id);
         model.addAttribute("book", book);
         return "bookdetailsShow";
     }

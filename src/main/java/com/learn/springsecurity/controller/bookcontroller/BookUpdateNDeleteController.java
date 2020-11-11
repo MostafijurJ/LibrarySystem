@@ -7,9 +7,8 @@
 
 package com.learn.springsecurity.controller.bookcontroller;
 
-import com.learn.springsecurity.dto.BookRegisterDto;
 import com.learn.springsecurity.entities.Book;
-import com.learn.springsecurity.service.BookRegisterService;
+import com.learn.springsecurity.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,24 +24,24 @@ import java.security.Principal;
 public class BookUpdateNDeleteController {
 
     @Autowired
-    private BookRegisterService bookRegisterService;
+    private BookService bookService;
 
     @GetMapping("/updateBook/{id}")
     public String showBookForm(@PathVariable("id") long id, Model model) {
-        Book book = bookRegisterService.loadBookByID(id);
+        Book book = bookService.loadBookByID(id);
         model.addAttribute("book", book);
         return "updateBook";
     }
 
     @PostMapping("saveUpdatebook/{id}/{date}")
     public String updateBookInfo(Book book, Principal principal) {
-        bookRegisterService.saveUpdateBook(book, principal);
+        bookService.saveUpdateBook(book, principal);
         return "saveUpdateMessage";
     }
 
     @GetMapping("deleteBook/{id}")
     public String deleteUser(@PathVariable("id") long id) {
-        bookRegisterService.deleteBook(id);
+        bookService.deleteBook(id);
         return "deleteSuccessMessage";
     }
 }

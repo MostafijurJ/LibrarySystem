@@ -9,10 +9,7 @@ package com.learn.springsecurity.controller.bookcontroller;
 
 import com.learn.springsecurity.dto.BookRegisterDto;
 import com.learn.springsecurity.entities.Book;
-import com.learn.springsecurity.entities.User;
-import com.learn.springsecurity.repository.BookRepository;
-import com.learn.springsecurity.repository.UserRepository;
-import com.learn.springsecurity.service.BookRegisterService;
+import com.learn.springsecurity.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +24,7 @@ import java.security.Principal;
 public class BookRegisterController {
 
     @Autowired
-    private BookRegisterService bookRegisterService;
+    private BookService bookService;
 
     @ModelAttribute("book")
     public Book bookRegister() {
@@ -41,7 +38,7 @@ public class BookRegisterController {
 
     @PostMapping
     public String saveBook(@ModelAttribute BookRegisterDto  bookRegisterDto, Principal principal) {
-        bookRegisterService.saveBook(bookRegisterDto,principal);
+        bookService.saveBook(bookRegisterDto,principal);
         return "redirect:/addBook?success";
     }
 }

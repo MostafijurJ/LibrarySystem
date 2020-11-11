@@ -5,10 +5,10 @@
 */
 
 
-package com.learn.springsecurity.controller;
+package com.learn.springsecurity.controller.usercontroller;
 
 import com.learn.springsecurity.entities.User;
-import com.learn.springsecurity.repository.UserRepository;
+import com.learn.springsecurity.service.UserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,12 +20,12 @@ import java.security.Principal;
 public class ShowUserController {
 
     @Autowired
-    UserRepository repository;
+    UserDetailsService userDetailsService;
 
     @GetMapping("details")
     public String detailsShow(Model model, Principal principal) {
         String username = principal.getName();
-        User user = repository.findByUsername(username);
+        User user = userDetailsService.findByUserName(username);
         model.addAttribute("data", user);
         model.addAttribute("details", "details");
 
@@ -36,10 +36,9 @@ public class ShowUserController {
     @GetMapping("hide")
     public String hideDetails(Model model, Principal principal) {
         String username = principal.getName();
-        User user = repository.findByUsername(username);
+        User user = userDetailsService.findByUserName(username);
         model.addAttribute("data", user);
         model.addAttribute("details", "hide");
-
         return "index";
     }
 }

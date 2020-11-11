@@ -18,7 +18,7 @@ import java.security.Principal;
 import java.util.List;
 
 @Service
-public class BookRegisterService {
+public class BookService {
 
     @Autowired
     BookRepository bookRepository;
@@ -59,7 +59,7 @@ public class BookRegisterService {
         bookRepository.save(book);
     }
 
-    public void deleteBook(Long id){
+    public void deleteBook(Long id) {
         bookRepository.deleteById(id);
     }
 

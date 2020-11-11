@@ -1,4 +1,4 @@
-package com.learn.springsecurity.controller;
+package com.learn.springsecurity.controller.usercontroller;
 
 
 import com.learn.springsecurity.service.UserService;

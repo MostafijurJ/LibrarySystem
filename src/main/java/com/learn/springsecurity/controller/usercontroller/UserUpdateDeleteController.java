@@ -5,10 +5,10 @@
 */
 
 
-package com.learn.springsecurity.controller;
+package com.learn.springsecurity.controller.usercontroller;
 
 import com.learn.springsecurity.entities.User;
-import com.learn.springsecurity.repository.UserRepository;
+import com.learn.springsecurity.service.UserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,15 +20,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class UserUpdateDeleteController {
 
     @Autowired
-    UserRepository repository;
+    UserDetailsService userDetailsService;
 
     //call to action when press edit/update information
     @GetMapping("update/{id}")
     public ModelAndView updateInfo(@PathVariable("id") Long id) {
-
         ModelAndView modelAndView = new ModelAndView();
-        User user = repository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid User Id:" + id));
+        User user = userDetailsService.findByID(id);
         modelAndView.addObject("user", user);
         modelAndView.setViewName("updateUser");
         return modelAndView;
@@ -37,16 +35,14 @@ public class UserUpdateDeleteController {
     // call to action when press save data
     @PostMapping("save/{id}/{username}")
     public String saveUpdate(User user) {
-        repository.save(user);
-        return "success";
+        userDetailsService.save(user);
+        return "saveUpdateMessage";
     }
 
     //delete controller
     @GetMapping("delete/{id}")
     public String deleteUser(@PathVariable("id") long id) {
-        User student = repository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid student Id:" + id));
-        repository.delete(student);
+        userDetailsService.deleteUserByID(id);
         return "login";
     }
 }
