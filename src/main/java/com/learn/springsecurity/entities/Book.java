@@ -22,13 +22,14 @@ public class Book{
     private String version;
     private String date;
 
-    private Long userId;
+   // @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Long  userId;
 
     public Book(){
         super();
     }
 
-    public Book(String bookName, String authorName, String version, String date, long userId) {
+    public Book(String bookName, String authorName, String version, String date, Long userId) {
         this.bookName = bookName;
         this.authorName = authorName;
         this.version = version;
@@ -36,7 +37,7 @@ public class Book{
         this.userId = userId;
     }
 
-    public Book(Long id, String bookName, String authorName, String version, String date, Long userId) {
+    public Book(Long id, String bookName, String authorName, String version, String date, Long  userId) {
         this.id = id;
         this.bookName = bookName;
         this.authorName = authorName;

@@ -7,12 +7,13 @@
 
 package com.learn.springsecurity.dto;
 
+
 public class BookRegisterDto {
+    private Long id;
     private String bookName;
     private  String authorName;
     private String version;
     private String date;
-
     private Long userId;
 
     public BookRegisterDto(){
@@ -25,6 +26,14 @@ public class BookRegisterDto {
         this.version = version;
         this.date = date;
         this.userId = userId;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getBookName() {

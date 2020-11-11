@@ -21,7 +21,6 @@ public class MainUserController {
         return "login";
     }
 
-
     @GetMapping("/")
     public ModelAndView home(Principal principal) {
 

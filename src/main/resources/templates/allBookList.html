@@ -2,11 +2,11 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <!--
   Author: Mostafijur Rahman
-  Date: 11/9/2020
-  Time: 1:14 PM
+  Date: 11/11/2020
+  Time: 4:10 PM
 -->
 <head>
-    <title>View Book</title>
+    <title>All Book lists</title>
     <link rel="stylesheet" href="/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -17,7 +17,6 @@
           crossorigin="anonymous">
 </head>
 <body>
-
 <div class="container my-5">
     <!-- create navigation bar ( header) -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -46,8 +45,8 @@
 
 <div class="widthMain">
 
-    <p class="sign" align="center">List of your Carted Books</p>
-    <table class="table table-striped widthMain">
+    <p class="sign" align="center"> List of All Books</p>
+    <table class="table table-striped tableShow">
         <thead>
         <tr>
             <th scope="col">Book Name</th>
@@ -55,11 +54,11 @@
         </thead>
         <tbody>
         <tbody>
-        <tr th:each="book : ${books}">
+        <tr th:each="allBook : ${allBook}">
 
-            <td th:text="${book.bookName}">Name</td>
+            <td th:text="${allBook.bookName}">Name</td>
 
-            <td><a th:href="@{/details/{id} (id=${book.id})}">Details</a>
+            <td><a class="btn btn-sm btn-info" th:href="@{/cart/{id} (id=${allBook.id})}">Add to Cart</a>
         </tr>
 
         </tbody>

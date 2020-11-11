@@ -63,5 +63,8 @@ public class BookService {
         bookRepository.deleteById(id);
     }
 
-
+    public List<Book> findAll() {
+        List<Book> books = (List<Book>) bookRepository.findAll();
+        return books;
+    }
 }
