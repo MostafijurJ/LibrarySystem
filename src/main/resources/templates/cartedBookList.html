@@ -1,15 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <!--
   Author: Mostafijur Rahman
   Date: 11/12/2020
   Time: 1:37 PM
 -->
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title> All carted book</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
 </head>
 <body>
+
+<div class="container my-5">
+    <!-- create navigation bar ( header) -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed"
+                        data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                        aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span> <span
+                        class="icon-bar"></span> <span class="icon-bar"></span> <span
+                        class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/home">Profile Management Module</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li sec:authorize="isAuthenticated()"><a th:href="@{/}">Profile</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="widthMain">
+
+    <p class="sign" align="center">List of your Carted Books</p>
+    <table class="table table-striped widthMain">
+        <thead>
+        <tr>
+            <th scope="col">Book Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tbody>
+        <tr th:each="listBook : ${listBook}">
+            <td th:text="${listBook.bookName}">Name</td>
+            <td><a th:href="@{/details/{id} (id=${listBook.id})}">Details</a>
+        </tr>
+        </tbody>
+        </tbody>
+    </table>
+
+</div>
 
 </body>
 </html>

@@ -33,6 +33,7 @@ public class BookCartService {
     @Autowired
     private RoleRepository roleRepository;
 
+    //Service for book carted
     public void addToCart(Long id, Principal principal){
         String userName = principal.getName();
         User user = userRepository.findByUsername(userName);
@@ -44,11 +45,20 @@ public class BookCartService {
         bookRepository.save(book);
     }
 
+    //Service for checking role of the user
     public String roleCheck(Principal principal){
         User user = userRepository.findByUsername(principal.getName());
         Role role = roleRepository.findById(user.getId())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid User Id:"));
         return role.getName();
     }
+
+    //Service for selecting specific user's carted book
+    public List<Book> findCartedBook(Principal principal) {
+        User user = userRepository.findByUsername(principal.getName());
+        List<Book> books = user.getBooks();
+        return books;
+    }
+
 
 }

@@ -55,8 +55,12 @@
         </div>
     </div>
     <br><br>
-    <div class="form1">
+    <div class="form1" th:if="${userRole} == 'ROLE_ADMIN'">
         <a href="/viewBook" class="form1 submit"> View Book</a> <br>
+    </div>
+    <br><br>
+    <div class="form1" th:if="${userRole} == 'ROLE_USER'">
+        <a th:href="@{/show-all}" class="form1 submit">Carted Books</a> <br>
     </div>
 
 </div>

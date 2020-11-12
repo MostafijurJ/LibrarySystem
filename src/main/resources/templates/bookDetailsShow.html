@@ -41,6 +41,9 @@
                     <li sec:authorize="isAuthenticated()"><a th:href="@{/}">Profile</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
+                    <li sec:authorize="isAuthenticated()"><a th:href="@{/cart/}">Dashboard</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
                     <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
                 </ul>
             </div>
@@ -52,7 +55,7 @@
 
     <p class="sign" align="center"> Details of this Book</p>
 
-    <table class=" bk table table-striped">
+    <table class="bk table table-striped">
         <thead>
         <tr>
             <th scope="col">ID</th>

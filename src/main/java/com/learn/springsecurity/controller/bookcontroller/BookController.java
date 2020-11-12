@@ -7,6 +7,7 @@
 package com.learn.springsecurity.controller.bookcontroller;
 
 import com.learn.springsecurity.entities.Book;
+import com.learn.springsecurity.service.BookCartService;
 import com.learn.springsecurity.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,8 @@ public class BookController {
 
     @Autowired
     private BookService bookService;
+    @Autowired
+    private BookCartService bookCartService;
 
     @GetMapping("/home")
     public String homePage(Model model) {
@@ -39,8 +42,9 @@ public class BookController {
 
     //Controller for unique book details view
     @GetMapping("/details/{id}")
-    public String detailsShow(@PathVariable("id") Long id, Model model) {
-        Book book = bookService.loadBookByID(id);
+    public String detailsShow(@PathVariable("id") Long id, Model model, Principal principal) {
+       Book book = bookService.loadBookByID(id);
+       model.addAttribute("userRole", bookCartService.roleCheck(principal));
         model.addAttribute("book", book);
         return "bookDetailsShow";
     }

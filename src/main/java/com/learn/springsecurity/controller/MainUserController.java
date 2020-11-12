@@ -23,7 +23,6 @@ public class MainUserController {
 
     @GetMapping("/")
     public ModelAndView home(Principal principal) {
-
         String username = principal.getName();
         ModelAndView model = new ModelAndView();
         User user = repository.findByUsername(username);

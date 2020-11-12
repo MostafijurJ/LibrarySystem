@@ -6,9 +6,11 @@
 
 
 package com.learn.springsecurity.entities;
+import net.bytebuddy.agent.builder.AgentBuilder;
 import org.springframework.security.core.GrantedAuthority;
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(uniqueConstraints = {
@@ -28,6 +30,9 @@ public class User {
     private String phone;
     private String address;
     private String password;
+
+    @ManyToMany(mappedBy ="users")
+    private List<Book> books;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Collection<Role> roles;
@@ -58,6 +63,14 @@ public class User {
         this.phone = phone;
         this.address =address;
         this.password = password;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 
     public String getUserName() {
