@@ -49,8 +49,10 @@
 <div class="main">
     <p class="sign" align="center">Welcome to Dashboard</p>
     <br><br>
-    <div class="form1">
-        <a href="/addBook" class="form1 submit"> Add Book</a> <br>
+    <div class="card" th:if="${userRole} == 'ROLE_ADMIN'">
+        <div class="form1">
+            <a href="/addBook" class="form1 submit"> Add Book</a> <br>
+        </div>
     </div>
     <br><br>
     <div class="form1">

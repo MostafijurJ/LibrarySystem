@@ -8,8 +8,7 @@
 package com.learn.springsecurity.entities;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 public class Book{
@@ -17,17 +16,19 @@ public class Book{
     @Id
     @GeneratedValue
     private  Long id;
+    @Column
     private String bookName;
+    @Column
     private  String authorName;
+    @Column
     private String version;
+    @Column
     private String date;
-
-   // @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+   @Column(name = "admin_id")
     private Long  userId;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "books")
-    private Set<User> users = new HashSet<>();
-
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<User> users;
 
     public Book(){
         super();
@@ -48,6 +49,23 @@ public class Book{
         this.version = version;
         this.date = date;
         this.userId = userId;
+    }
+
+    public Book(String bookName, String authorName, String version, String date, Long userId, List<User> users) {
+        this.bookName = bookName;
+        this.authorName = authorName;
+        this.version = version;
+        this.date = date;
+        this.userId = userId;
+        this.users = users;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 
     public Long getId() {

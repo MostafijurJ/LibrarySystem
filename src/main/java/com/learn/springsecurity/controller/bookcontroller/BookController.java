@@ -6,7 +6,6 @@
 
 package com.learn.springsecurity.controller.bookcontroller;
 
-import com.learn.springsecurity.dto.BookRegisterDto;
 import com.learn.springsecurity.entities.Book;
 import com.learn.springsecurity.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +42,7 @@ public class BookController {
     public String detailsShow(@PathVariable("id") Long id, Model model) {
         Book book = bookService.loadBookByID(id);
         model.addAttribute("book", book);
-        return "bookdetailsShow";
+        return "bookDetailsShow";
     }
 
 

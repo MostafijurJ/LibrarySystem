@@ -30,12 +30,10 @@ public class BookService {
         User user = userRepository.findByUsername(principal.getName());
         Long userId = user.getId();
         bookRegisterDto.setUserId(userId);
-
         Book book = new Book(bookRegisterDto.getBookName(), bookRegisterDto.getAuthorName(),
                 bookRegisterDto.getVersion(), bookRegisterDto.getDate(), bookRegisterDto.getUserId());
         bookRepository.save(book);
     }
-
     //Service for list view of  all the books
     public List<Book> findAllBook(Principal principal) {
         User user = userRepository.findByUsername(principal.getName());

@@ -6,13 +6,9 @@
 
 
 package com.learn.springsecurity.entities;
-
 import org.springframework.security.core.GrantedAuthority;
-
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(uniqueConstraints = {
@@ -33,19 +29,17 @@ public class User {
     private String address;
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Book> books = new HashSet<>();
-
-
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Collection<Role> roles;
 
     public User(String userName, String password, Collection<? extends GrantedAuthority> grantedAuthorities) {
 
     }
+
     public User(){
         super();
     }
+
 
     public User(String name, String username, String email, String phone, String address, String password, Collection<Role> roles) {
         this.name = name;
@@ -56,6 +50,7 @@ public class User {
         this.password = password;
         this.roles = roles;
     }
+
 
     public User(String name, String email, String phone, String address, String password) {
         this.name = name;
