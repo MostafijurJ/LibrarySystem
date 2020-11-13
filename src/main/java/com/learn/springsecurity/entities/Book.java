@@ -8,6 +8,7 @@
 package com.learn.springsecurity.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity
@@ -16,9 +17,9 @@ public class Book{
     @Id
     @GeneratedValue
     private  Long id;
-    @Column
+    @NotBlank
     private String bookName;
-    @Column
+    @NotBlank
     private  String authorName;
     @Column
     private String version;

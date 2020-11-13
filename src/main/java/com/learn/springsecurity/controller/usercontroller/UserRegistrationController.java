@@ -1,13 +1,18 @@
 package com.learn.springsecurity.controller.usercontroller;
 
 
-import com.learn.springsecurity.service.UserService;
 import com.learn.springsecurity.dto.UserRegistrationDto;
+import com.learn.springsecurity.service.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.Valid;
+import java.sql.ResultSet;
 
 
 @Controller
@@ -21,7 +26,7 @@ public class UserRegistrationController {
         this.userService = userService;
     }
 
-    @ModelAttribute("user")
+    @ModelAttribute("userRegistrationDto")
     public UserRegistrationDto userRegistrationDto() {
         return new UserRegistrationDto();
     }
@@ -32,9 +37,13 @@ public class UserRegistrationController {
     }
 
     @PostMapping
-    public String registerUserAccount(@ModelAttribute UserRegistrationDto registrationDto) {
-        userService.save(registrationDto);
+    public String registerUserAccount(@Valid UserRegistrationDto userRegistrationDto, BindingResult result) {
 
+        if(result.hasErrors()){
+            System.out.println("error found");
+            return "registration";
+        }
+        userService.save(userRegistrationDto);
         return "redirect:/registration?success";
     }
 }

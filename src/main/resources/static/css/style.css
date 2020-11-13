@@ -164,6 +164,11 @@ form.buy {
     font-family: 'Ubuntu', sans-serif;
 }
 
+.error{
+    color: red;
+    font-size: 15px;
+}
+
 
 .un:focus, .pass:focus {
     border: 2px solid rgba(0, 0, 0, 0.18) !important;

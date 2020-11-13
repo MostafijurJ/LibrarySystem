@@ -69,6 +69,7 @@ public class BookService {
     }
 
     public List<Book> findAll() {
-        return (List<Book>) bookRepository.findAll();
+        List<Book> books = (List<Book>) bookRepository.findAll();
+        return books;
     }
 }

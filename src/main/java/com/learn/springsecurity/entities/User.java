@@ -9,6 +9,10 @@ package com.learn.springsecurity.entities;
 import net.bytebuddy.agent.builder.AgentBuilder;
 import org.springframework.security.core.GrantedAuthority;
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import javax.websocket.OnMessage;
 import java.util.Collection;
 import java.util.List;
 
@@ -24,8 +28,10 @@ public class User {
     private Long id;
 
     private String name;
-    @Column(nullable = false)
+    @NotBlank
+    @Size(min = 3, max = 10)
     private String username;
+    @Email
     private String email;
     private String phone;
     private String address;
@@ -138,4 +144,18 @@ public class User {
         this.roles = roles;
     }
 
+  /*  @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", password='" + password + '\'' +
+                ", books=" + books +
+                ", roles=" + roles +
+                '}';
+    }*/
 }
