@@ -21,7 +21,7 @@ import java.security.Principal;
 
 @Controller
 @RequestMapping()
-public class BookUpdateNDeleteController {
+public class BookOperationController {
 
     @Autowired
     private BookService bookService;

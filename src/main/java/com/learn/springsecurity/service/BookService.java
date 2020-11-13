@@ -15,6 +15,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -27,9 +31,14 @@ public class BookService {
 
     //Service for book registry controller
     public void saveBook(BookRegisterDto bookRegisterDto, Principal principal) {
+
+        Date date = Calendar.getInstance().getTime();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+        String currentDate = dateFormat.format(date);
+        bookRegisterDto.setDate(currentDate);
+
         User user = userRepository.findByUsername(principal.getName());
-        Long userId = user.getId();
-        bookRegisterDto.setUserId(userId);
+        bookRegisterDto.setUserId(user.getId());
         Book book = new Book(bookRegisterDto.getBookName(), bookRegisterDto.getAuthorName(),
                 bookRegisterDto.getVersion(), bookRegisterDto.getDate(), bookRegisterDto.getUserId());
         bookRepository.save(book);
@@ -45,15 +54,13 @@ public class BookService {
     public Book loadBookByID(Long id) {
         Book book = bookRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid Book Id:" + id));
-
         return book;
     }
 
     //Service for updating book controller
     public void saveUpdateBook(Book book, Principal principal) {
         User user = userRepository.findByUsername(principal.getName());
-        Long userId = user.getId();
-        book.setUserId(userId);
+        book.setUserId(user.getId());
         bookRepository.save(book);
     }
 
@@ -62,7 +69,6 @@ public class BookService {
     }
 
     public List<Book> findAll() {
-        List<Book> books = (List<Book>) bookRepository.findAll();
-        return books;
+        return (List<Book>) bookRepository.findAll();
     }
 }
