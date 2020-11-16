@@ -3,6 +3,7 @@ package com.learn.springsecurity.controller.usercontroller;
 
 import com.learn.springsecurity.dto.UserRegistrationDto;
 import com.learn.springsecurity.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
@@ -19,26 +20,25 @@ import java.sql.ResultSet;
 @RequestMapping("/registration")
 public class UserRegistrationController {
 
+    @Autowired
     private UserService userService;
 
-    public UserRegistrationController(UserService userService) {
-        super();
-        this.userService = userService;
-    }
-
-    @ModelAttribute("userRegistrationDto")
-    public UserRegistrationDto userRegistrationDto() {
-        return new UserRegistrationDto();
-    }
-
     @GetMapping
-    public String showRegistrationForm() {
+    public String showRegistrationForm(@ModelAttribute("userRegistrationDto")UserRegistrationDto userRegistrationDto) {
         return "registration";
     }
+
+
+/*    public UserRegistrationDto userRegistrationDto() {
+        return new UserRegistrationDto();
+    }*/
+
+
 
     @PostMapping
     public String registerUserAccount(@Valid UserRegistrationDto userRegistrationDto, BindingResult result) {
 
+        System.out.println(userRegistrationDto);
         if(result.hasErrors()){
             System.out.println("error found");
             return "registration";

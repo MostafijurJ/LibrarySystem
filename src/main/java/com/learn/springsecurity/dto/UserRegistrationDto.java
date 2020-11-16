@@ -1,17 +1,22 @@
 package com.learn.springsecurity.dto;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 public class UserRegistrationDto {
 
+    @NotBlank
     private String name;
+    @Size(min = 3, max = 10, message = "username must be 3 to 10 character")
     private String username;
+    @Email(message = "Email is not Valid")
     private String email;
+    @Size(min = 9, max = 11, message = "phone number must be 11 digit")
     private String phone;
     private String address;
     private String password;
 
-    public UserRegistrationDto() {
-        super();
-    }
 
     public UserRegistrationDto(String name, String username, String email, String phone, String address, String password) {
         this.name = name;
