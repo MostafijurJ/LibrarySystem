@@ -8,7 +8,7 @@ public class UserRegistrationDto {
 
     @NotBlank
     private String name;
-    @Size(min = 3, max = 10, message = "username must be 3 to 10 character")
+    @Size(min = 3, max = 15)
     private String username;
     @Email(message = "Email is not Valid")
     private String email;
