@@ -1,9 +1,3 @@
-/*
-  Author: Mostafijur Rahman
-  Date: 11/11/2020
-  Time: 10:04 AM
-*/
-
 package com.learn.springsecurity.service;
 
 import com.learn.springsecurity.dto.BookRegisterDto;
@@ -24,52 +18,52 @@ import java.util.List;
 @Service
 public class BookService {
 
-    @Autowired
-    BookRepository bookRepository;
-    @Autowired
-    UserRepository userRepository;
+  private final BookRepository bookRepository;
+  private final UserRepository userRepository;
 
-    //Service for book registry controller
-    public void saveBook(BookRegisterDto bookRegisterDto, Principal principal) {
+  public BookService(BookRepository bookRepository, UserRepository userRepository) {
+    this.bookRepository = bookRepository;
+    this.userRepository = userRepository;
+  }
 
-        Date date = Calendar.getInstance().getTime();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-        String currentDate = dateFormat.format(date);
-        bookRegisterDto.setDate(currentDate);
+  public void saveBook(BookRegisterDto bookRegisterDto, Principal principal) {
 
-        User user = userRepository.findByUsername(principal.getName());
-        bookRegisterDto.setUserId(user.getId());
-        Book book = new Book(bookRegisterDto.getBookName(), bookRegisterDto.getAuthorName(),
-                bookRegisterDto.getVersion(), bookRegisterDto.getDate(), bookRegisterDto.getUserId());
-        bookRepository.save(book);
-    }
-    //Service for list view of  all the books
-    public List<Book> findAllBook(Principal principal) {
-        User user = userRepository.findByUsername(principal.getName());
-        List<Book> books = (List<Book>) bookRepository.findAllByUserId(user.getId());
-        return books;
-    }
+    Date date = Calendar.getInstance().getTime();
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+    String currentDate = dateFormat.format(date);
+    bookRegisterDto.setDate(currentDate);
 
-    //Service for book details show controller
-    public Book loadBookByID(Long id) {
-        Book book = bookRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid Book Id:" + id));
-        return book;
-    }
+    User user = userRepository.findByUsername(principal.getName());
+    bookRegisterDto.setUserId(user.getId());
+    Book book = new Book(bookRegisterDto.getBookName(), bookRegisterDto.getAuthorName(),
+        bookRegisterDto.getVersion(), bookRegisterDto.getDate(), bookRegisterDto.getUserId());
+    bookRepository.save(book);
+  }
 
-    //Service for updating book controller
-    public void saveUpdateBook(Book book, Principal principal) {
-        User user = userRepository.findByUsername(principal.getName());
-        book.setUserId(user.getId());
-        bookRepository.save(book);
-    }
+  public List<Book> findAllBook(Principal principal) {
+    User user = userRepository.findByUsername(principal.getName());
+    List<Book> books = (List<Book>) bookRepository.findAllByUserId(user.getId());
+    return books;
+  }
 
-    public void deleteBook(Long id) {
-        bookRepository.deleteById(id);
-    }
+  public Book loadBookByID(Long id) {
+    Book book = bookRepository.findById(id)
+        .orElseThrow(() -> new IllegalArgumentException("Invalid Book Id:" + id));
+    return book;
+  }
 
-    public List<Book> findAll() {
-        List<Book> books = (List<Book>) bookRepository.findAll();
-        return books;
-    }
+  public void saveUpdateBook(Book book, Principal principal) {
+    User user = userRepository.findByUsername(principal.getName());
+    book.setUserId(user.getId());
+    bookRepository.save(book);
+  }
+
+  public void deleteBook(Long id) {
+    bookRepository.deleteById(id);
+  }
+
+  public List<Book> findAll() {
+    List<Book> books = (List<Book>) bookRepository.findAll();
+    return books;
+  }
 }
