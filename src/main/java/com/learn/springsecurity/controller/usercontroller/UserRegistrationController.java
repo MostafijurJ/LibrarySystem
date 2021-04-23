@@ -1,7 +1,6 @@
 package com.learn.springsecurity.controller.usercontroller;
 
 import com.learn.springsecurity.dto.UserRegistrationDto;
-import com.learn.springsecurity.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,12 +14,6 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/registration")
 public class UserRegistrationController {
-
-  private final UserService userService;
-
-  public UserRegistrationController(UserService userService) {
-    this.userService = userService;
-  }
 
   @GetMapping
   public String showRegistrationForm(@ModelAttribute("userRegistrationDto") UserRegistrationDto userRegistrationDto) {

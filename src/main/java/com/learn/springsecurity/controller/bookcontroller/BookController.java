@@ -3,7 +3,6 @@ package com.learn.springsecurity.controller.bookcontroller;
 import com.learn.springsecurity.entities.Book;
 import com.learn.springsecurity.service.BookCartService;
 import com.learn.springsecurity.service.BookService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +14,13 @@ import java.util.List;
 @Controller
 public class BookController {
 
-  @Autowired
-  private BookService bookService;
-  @Autowired
-  private BookCartService bookCartService;
+  private final BookService bookService;
+  private final BookCartService bookCartService;
+
+  public BookController(BookService bookService, BookCartService bookCartService) {
+    this.bookService = bookService;
+    this.bookCartService = bookCartService;
+  }
 
   @GetMapping("/home")
   public String homePage(Model model) {

@@ -1,13 +1,4 @@
-/*
-  Author: Mostafijur Rahman
-  Date: 11/11/2020
-  Time: 10:02 AM
-*/
-
-
 package com.learn.springsecurity.dto;
-
-import java.util.Date;
 
 public class BookRegisterDto {
     private Long id;
@@ -41,25 +32,15 @@ public class BookRegisterDto {
         return bookName;
     }
 
-    public void setBookName(String bookName) {
-        this.bookName = bookName;
-    }
-
     public String getAuthorName() {
         return authorName;
     }
 
-    public void setAuthorName(String authorName) {
-        this.authorName = authorName;
-    }
 
     public String getVersion() {
         return version;
     }
 
-    public void setVersion(String version) {
-        this.version = version;
-    }
 
     public String getDate() {
         return date;

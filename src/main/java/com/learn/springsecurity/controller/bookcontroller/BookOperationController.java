@@ -2,7 +2,6 @@ package com.learn.springsecurity.controller.bookcontroller;
 
 import com.learn.springsecurity.entities.Book;
 import com.learn.springsecurity.service.BookService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +15,11 @@ import java.security.Principal;
 @RequestMapping()
 public class BookOperationController {
 
-  @Autowired
-  private BookService bookService;
+  private final BookService bookService;
+
+  public BookOperationController(BookService bookService) {
+    this.bookService = bookService;
+  }
 
   @GetMapping("/updateBook/{id}")
   public String showBookForm(@PathVariable("id") long id, Model model) {
