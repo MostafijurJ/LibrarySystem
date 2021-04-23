@@ -1,10 +1,3 @@
-/*
-  Author: Mostafijur Rahman
-  Date: 11/9/2020
-  Time: 5:50 PM
-*/
-
-
 package com.learn.springsecurity.controller.bookcontroller;
 
 import com.learn.springsecurity.entities.Book;
@@ -23,25 +16,25 @@ import java.security.Principal;
 @RequestMapping()
 public class BookOperationController {
 
-    @Autowired
-    private BookService bookService;
+  @Autowired
+  private BookService bookService;
 
-    @GetMapping("/updateBook/{id}")
-    public String showBookForm(@PathVariable("id") long id, Model model) {
-        Book book = bookService.loadBookByID(id);
-        model.addAttribute("book", book);
-        return "updateBook";
-    }
+  @GetMapping("/updateBook/{id}")
+  public String showBookForm(@PathVariable("id") long id, Model model) {
+    Book book = bookService.loadBookByID(id);
+    model.addAttribute("book", book);
+    return "updateBook";
+  }
 
-    @PostMapping("saveUpdatebook/{id}/{date}")
-    public String updateBookInfo(Book book, Principal principal) {
-        bookService.saveUpdateBook(book, principal);
-        return "saveUpdateMessage";
-    }
+  @PostMapping("saveUpdatebook/{id}/{date}")
+  public String updateBookInfo(Book book, Principal principal) {
+    bookService.saveUpdateBook(book, principal);
+    return "saveUpdateMessage";
+  }
 
-    @GetMapping("deleteBook/{id}")
-    public String deleteUser(@PathVariable("id") long id) {
-        bookService.deleteBook(id);
-        return "deleteSuccessMessage";
-    }
+  @GetMapping("deleteBook/{id}")
+  public String deleteUser(@PathVariable("id") long id) {
+    bookService.deleteBook(id);
+    return "deleteSuccessMessage";
+  }
 }

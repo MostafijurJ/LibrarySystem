@@ -1,9 +1,3 @@
-/*
-  Author: Mostafijur Rahman
-  Date: 11/9/2020
-  Time: 1:25 PM
-*/
-
 package com.learn.springsecurity.controller.bookcontroller;
 
 import com.learn.springsecurity.entities.Book;
@@ -21,33 +15,32 @@ import java.util.List;
 @Controller
 public class BookController {
 
-    @Autowired
-    private BookService bookService;
-    @Autowired
-    private BookCartService bookCartService;
+  @Autowired
+  private BookService bookService;
+  @Autowired
+  private BookCartService bookCartService;
 
-    @GetMapping("/home")
-    public String homePage(Model model) {
-        List<Book> bookList = bookService.findAll();
-        model.addAttribute("allBook", bookList);
-        return "allBookList";
-    }
+  @GetMapping("/home")
+  public String homePage(Model model) {
+    List<Book> bookList = bookService.findAll();
+    model.addAttribute("allBook", bookList);
+    return "allBookList";
+  }
 
-    @GetMapping("/viewBook")
-    public String ViewBook(Model model, Principal principal) {
-        List<Book> books = bookService.findAllBook(principal);
-        model.addAttribute("books", books);
-        return "viewBook";
-    }
+  @GetMapping("/viewBook")
+  public String ViewBook(Model model, Principal principal) {
+    List<Book> books = bookService.findAllBook(principal);
+    model.addAttribute("books", books);
+    return "viewBook";
+  }
 
-    //Controller for unique book details view
-    @GetMapping("/details/{id}")
-    public String detailsShow(@PathVariable("id") Long id, Model model, Principal principal) {
-       Book book = bookService.loadBookByID(id);
-       model.addAttribute("userRole", bookCartService.roleCheck(principal));
-        model.addAttribute("book", book);
-        return "bookDetailsShow";
-    }
+  @GetMapping("/details/{id}")
+  public String detailsShow(@PathVariable("id") Long id, Model model, Principal principal) {
+    Book book = bookService.loadBookByID(id);
+    model.addAttribute("userRole", bookCartService.roleCheck(principal));
+    model.addAttribute("book", book);
+    return "bookDetailsShow";
+  }
 
 
 }

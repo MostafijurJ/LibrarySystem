@@ -22,28 +22,28 @@ import java.util.List;
 @Controller
 public class BookCartController {
 
-    @Autowired
-    private BookCartService bookCartService;
+  @Autowired
+  private BookCartService bookCartService;
 
-    @GetMapping("cart/{id}")
-    public String cartedBook(@PathVariable("id") Long id, Principal principal, Model model){
-            bookCartService.addToCart(id ,principal);
-            String userRole = bookCartService.roleCheck(principal);
-            model.addAttribute("userRole", userRole);
-        return "homePage";
-    }
+  @GetMapping("cart/{id}")
+  public String cartedBook(@PathVariable("id") Long id, Principal principal, Model model) {
+    bookCartService.addToCart(id, principal);
+    String userRole = bookCartService.roleCheck(principal);
+    model.addAttribute("userRole", userRole);
+    return "homePage";
+  }
 
-    @GetMapping("cart")
-    public String cartedHomePage(Principal principal, Model model){
-        String userRole = bookCartService.roleCheck(principal);
-        model.addAttribute("userRole", userRole);
-        return "homePage";
-    }
+  @GetMapping("cart")
+  public String cartedHomePage(Principal principal, Model model) {
+    String userRole = bookCartService.roleCheck(principal);
+    model.addAttribute("userRole", userRole);
+    return "homePage";
+  }
 
-    @GetMapping("show-all")
-    public String showAllCartedBook(Principal principal, Model model){
-        List<Book> book =  bookCartService.findCartedBook(principal);
-        model.addAttribute("listBook", book);
-        return "cartedBookList";
-    }
+  @GetMapping("show-all")
+  public String showAllCartedBook(Principal principal, Model model) {
+    List<Book> book = bookCartService.findCartedBook(principal);
+    model.addAttribute("listBook", book);
+    return "cartedBookList";
+  }
 }

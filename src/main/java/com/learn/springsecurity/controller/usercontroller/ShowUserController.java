@@ -1,10 +1,3 @@
-/*
-  Author: Mostafijur Rahman
-  Date: 11/6/2020
-  Time: 6:03 PM
-*/
-
-
 package com.learn.springsecurity.controller.usercontroller;
 
 import com.learn.springsecurity.entities.User;
@@ -19,26 +12,28 @@ import java.security.Principal;
 @Controller
 public class ShowUserController {
 
-    @Autowired
-    UserDetailsService userDetailsService;
+  private final UserDetailsService userDetailsService;
 
-    @GetMapping("details")
-    public String detailsShow(Model model, Principal principal) {
-        String username = principal.getName();
-        User user = userDetailsService.findByUserName(username);
-        model.addAttribute("data", user);
-        model.addAttribute("details", "details");
+  public ShowUserController(UserDetailsService userDetailsService) {
+    this.userDetailsService = userDetailsService;
+  }
 
-        return "index";
-    }
+  @GetMapping("details")
+  public String detailsShow(Model model, Principal principal) {
+    String username = principal.getName();
+    User user = userDetailsService.findByUserName(username);
+    model.addAttribute("data", user);
+    model.addAttribute("details", "details");
+    return "index";
+  }
 
-    // Call to action when want to hide the details info
-    @GetMapping("hide")
-    public String hideDetails(Model model, Principal principal) {
-        String username = principal.getName();
-        User user = userDetailsService.findByUserName(username);
-        model.addAttribute("data", user);
-        model.addAttribute("details", "hide");
-        return "index";
-    }
+  //TODO Call to action when want to hide the details info
+  @GetMapping("hide")
+  public String hideDetails(Model model, Principal principal) {
+    String username = principal.getName();
+    User user = userDetailsService.findByUserName(username);
+    model.addAttribute("data", user);
+    model.addAttribute("details", "hide");
+    return "index";
+  }
 }

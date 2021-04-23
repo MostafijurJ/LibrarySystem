@@ -1,10 +1,3 @@
-/*
-  Author: Mostafijur Rahman
-  Date: 11/9/2020
-  Time: 2:09 PM
-*/
-
-
 package com.learn.springsecurity.controller.bookcontroller;
 
 import com.learn.springsecurity.dto.BookRegisterDto;
@@ -24,23 +17,26 @@ import java.util.Date;
 @RequestMapping("/addBook")
 public class BookRegisterController {
 
-    @Autowired
-    private BookService bookService;
+  private final BookService bookService;
 
-    @ModelAttribute("book")
-    public Book bookRegister() {
-        return new Book();
-    }
+  public BookRegisterController(BookService bookService) {
+    this.bookService = bookService;
+  }
 
-    @GetMapping
-    public String showBookForm() {
-        return "addBook";
-    }
+  @ModelAttribute("book")
+  public Book bookRegister() {
+    return new Book();
+  }
 
-    @PostMapping
-    public String saveBook(@ModelAttribute BookRegisterDto  bookRegisterDto, Principal principal) {
+  @GetMapping
+  public String showBookForm() {
+    return "addBook";
+  }
 
-        bookService.saveBook(bookRegisterDto,principal);
-        return "redirect:/addBook?success";
-    }
+  @PostMapping
+  public String saveBook(@ModelAttribute BookRegisterDto bookRegisterDto, Principal principal) {
+
+    bookService.saveBook(bookRegisterDto, principal);
+    return "redirect:/addBook?success";
+  }
 }

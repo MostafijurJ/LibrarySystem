@@ -13,25 +13,26 @@ import java.security.Principal;
 @Controller
 public class MainUserController {
 
-    @Autowired
-    UserRepository repository;
+  private final UserRepository repository;
 
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
+  public MainUserController(UserRepository repository) {
+    this.repository = repository;
+  }
 
-    @GetMapping("/")
-    public ModelAndView home(Principal principal) {
-        String username = principal.getName();
-        ModelAndView model = new ModelAndView();
-        User user = repository.findByUsername(username);
-        model.setViewName("index");
-        model.addObject("data", user);
-        return model;
-    }
+  @GetMapping("/login")
+  public String login() {
+    return "login";
+  }
 
-
+  @GetMapping("/")
+  public ModelAndView home(Principal principal) {
+    String username = principal.getName();
+    ModelAndView model = new ModelAndView();
+    User user = repository.findByUsername(username);
+    model.setViewName("index");
+    model.addObject("data", user);
+    return model;
+  }
 
 
 }

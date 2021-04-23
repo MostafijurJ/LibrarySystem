@@ -1,10 +1,3 @@
-/*
-  Author: Mostafijur Rahman
-  Date: 11/9/2020
-  Time: 1:55 PM
-*/
-
-
 package com.learn.springsecurity.entities;
 
 import javax.persistence.*;
